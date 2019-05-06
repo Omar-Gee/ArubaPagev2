@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Home from "./components/home/home"
 import NewsSection from "./components/newsSection/newsSection"
@@ -8,42 +8,42 @@ import SubNavigation from "./components/subNavigation/subNavigation"
 import About from "./components/about/about"
 
 import { getNewsArticles } from "./utils/getNewsArticles"
+import serviceNameFormatter from "./utils/serviceNameFormatter"
+import services from "./services/newsSources"
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      news: [],
-    }
-  }
-  async componentDidMount() {
-    const news = await getNewsArticles()
-    this.setState({
-      news
-    })
-  }
-  // const [newsArticles, setNewsArticles] = React.useState([])
+const App =  () => {
+  const newsData = getNewsArticles()
 
-
-
-  render() {
-    console.log(this.state.news);
-    return (
-      <div>
-        <Router>
-          <MainNavigation />
-          <SubNavigation />
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/bondia" component={() => <NewsSection title="Bon Dia" />} />
-
-        </Router>
-
-      </div>
-
-    );
+  console.log(typeof(newsData));
+  console.log(newsData);
+  const getKeyByValue = (object, value) => {
+    return Object.keys(object).find(key => object[key] === value);
   }
 
+  return (
+    <div>
+      <Router>
+        <MainNavigation />
+        <SubNavigation  />
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+
+        {
+          Object.keys(services).map(service => {
+            const {formattedName, redirect} = serviceNameFormatter[service]
+            {/* console.log(newsData); */}
+            return (
+              <Route
+                key={redirect}
+                path={'/'+redirect}
+                component={() => <NewsSection title={formattedName}  />}
+              />
+            )
+          })
+        }
+      </Router>
+    </div>
+  );
 }
 
 export default App;

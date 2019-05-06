@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from "styled-components"
 import NewsItem from "../newsItem/newsItem"
+import { formattedToService } from "../../utils/serviceNameFormatter"
 
 const newsSection = (props) => {
+  console.log(props);
   return (
     <Container>
       <Title>{props.title}</Title>

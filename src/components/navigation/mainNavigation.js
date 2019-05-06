@@ -3,9 +3,9 @@ import { Link } from "react-router-dom"
 
 const mainNavigation = () => {
   return (
-       <div>
+    <div>
       <Link to="/">
-       Home
+        Home
       </Link>
       <Link to="/about">
         About

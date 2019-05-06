@@ -26,7 +26,7 @@ export const getNewsArticles = async () => {
       })
 
       formattedNewsArticles.push({
-        service,
+        newsSource: service,
         newsItems:
           newsItems
       })
@@ -34,6 +34,7 @@ export const getNewsArticles = async () => {
     } catch (e) {
       console.error(e);
     }
+
   })
 
   return formattedNewsArticles
