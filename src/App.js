@@ -8,18 +8,9 @@ import SubNavigation from "./components/subNavigation/subNavigation"
 import About from "./components/about/about"
 
 import { getNewsArticles } from "./utils/getNewsArticles"
-import serviceNameFormatter from "./utils/serviceNameFormatter"
-import services from "./services/newsSources"
 
 const App =  () => {
   const newsData = getNewsArticles()
-
-  console.log(typeof(newsData));
-  console.log(newsData);
-  const getKeyByValue = (object, value) => {
-    return Object.keys(object).find(key => object[key] === value);
-  }
-
   return (
     <div>
       <Router>
@@ -27,16 +18,20 @@ const App =  () => {
         <SubNavigation  />
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
-
         {
-          Object.keys(services).map(service => {
-            const {formattedName, redirect} = serviceNameFormatter[service]
-            {/* console.log(newsData); */}
+          newsData.map(newsSource => {
             return (
               <Route
-                key={redirect}
-                path={'/'+redirect}
-                component={() => <NewsSection title={formattedName}  />}
+                key={newsSource.newsSource.redirect}
+                path={'/' + newsSource.newsSource.redirect}
+                component={
+                  () => (
+                    <NewsSection
+                      title={newsSource.newsSource.formattedName}
+                      newsItems={newsSource.newsItems}
+                    />
+                  )
+                }
               />
             )
           })

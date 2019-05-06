@@ -1,28 +1,48 @@
 import React from 'react';
 import styled from "styled-components"
-import potret from "../../images/placeholder3.jpg"
-const newsItem = () => {
+import ToggleContent from "../modal/toggleContent"
+import Modal from "../modal/modal"
+
+const newsItem = (props) => {
+
   return (
-    <Container>
-        <Title>Valero ta sera porta pa sapatonan.</Title>
-        <Image src={potret} alt="alt" />
-        <Excerpt>Some excerpt here...Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum </Excerpt>
+    <Container id={props.id} >
+        <Title>{props.title.length > 100 ? props.title.slice(0,100) + '...' : props.title}</Title>
+        <Image src={props.image} alt="alt" />
+        <Excerpt>{props.excerpt.length > 340 ? props.excerpt.slice(0,340) + '...' : props.excerpt}</Excerpt>
+        <p id={props.id}>Lesa mas</p>
+        <p>
+          <ToggleContent
+            toggle={show => <button onClick={show}>Open</button>}
+            content={hide => (
+              <Modal>
+                <Title>{props.title.length > 100 ? props.title.slice(0,100) + '...' : props.title}</Title>
+                <Image src={props.image} alt="alt" />
+                <Excerpt>{props.excerpt.length > 340 ? props.excerpt.slice(0,340) + '...' : props.excerpt}</Excerpt>
+                <button onClick={hide}>Close</button>
+              </Modal>
+            )}
+          />
+        </p>
     </Container>
   );
 };
 
 const Container = styled.div`
-
-  width: 350px;
+  word-break: break-word;
+  width: 320px;
 `
 const Title = styled.h1`
-  color: red;
+  font-size: larger;
+  height: 88px;
 `
 const Image = styled.img`
+  height:300px;
+  width: 320px;
   border-radius: 6px;
 `
 const Excerpt = styled.div`
-  color: blue;
+  color: dimgrey;
 `
 
 export default newsItem;

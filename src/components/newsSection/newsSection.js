@@ -1,18 +1,23 @@
 import React from 'react';
 import styled from "styled-components"
 import NewsItem from "../newsItem/newsItem"
-import { formattedToService } from "../../utils/serviceNameFormatter"
 
 const newsSection = (props) => {
-  console.log(props);
   return (
     <Container>
       <Title>{props.title}</Title>
       <NewsItemsContainer>
-        <NewsItem />
-        <NewsItem />
-        <NewsItem />
-        <NewsItem />
+        {props.newsItems.map(newsItem => {
+          return (
+            <NewsItem
+              key={newsItem.id}
+              id={newsItem.id}
+              title={newsItem.title}
+              image={newsItem.imageUrl}
+              excerpt={newsItem.excerpt}
+            />
+          )
+        })}
       </NewsItemsContainer>
     </Container>
   );
@@ -28,6 +33,7 @@ text-align: left;
 
 const NewsItemsContainer = styled.div`
   display: grid;
+  justify-content: space-around;
   grid-template-columns: auto auto auto auto;
 `
 

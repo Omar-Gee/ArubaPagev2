@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom"
-import newsData from "./subNavigation.data"
 import services from "../../services/newsSources"
 import serviceNameFormatter from "../../utils/serviceNameFormatter"
-
 
 const subNavigation = (props) => {
   return (
