@@ -39,7 +39,8 @@ const NewsItem = (props) => {
 };
 
 const Container = styled.div`
-  margin:32px;
+  margin:32px auto;
+  text-align: -webkit-center;
 `
 const Title = styled.h1`
   font-size: larger;

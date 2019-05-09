@@ -4,6 +4,7 @@ import NewsItem from "../newsItem/newsItem"
 import { Divider, Row, Col } from "antd"
 
 const newsSection = (props) => {
+  console.log(props);
   return (
     <Container>
       <Divider ><Title>{props.title}</Title></Divider>
@@ -11,7 +12,7 @@ const newsSection = (props) => {
             <Row type="flex" justify="center">
                 {props.newsItems.map(newsItem => {
                   return (
-                    <Col span={5} key={newsItem.id}>
+                    <Col sm={{ span: 24 }} md={{ span: 10 }}xl={{ span: 6 }}   key={newsItem.id}>
                       <NewsItem
                         id={newsItem.id}
                         title={newsItem.title}

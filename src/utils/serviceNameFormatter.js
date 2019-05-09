@@ -1,4 +1,8 @@
 export default {
+  eArubianoNews: {
+    formattedName: "eArubianoNews",
+    redirect: "earubianonews",
+  },
   arubaNative: {
     formattedName: "Aruba Native",
     redirect: "arubanative",
@@ -41,6 +45,7 @@ export default {
   },
 }
 export const formattedToService= {
+  earubianonews: 'eArubiano News',
   arubaNative: "Aruba Native",
   aweMainta: "Awe Mainta",
   _24ora: "24 Ora",

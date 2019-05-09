@@ -27,6 +27,7 @@ class App extends React.Component {
 
   render () {
     const {newsData, loading} = this.state
+    console.log(newsData);
     return (
       <div>
         <Router>

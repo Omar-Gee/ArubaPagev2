@@ -18,7 +18,7 @@ const MainNavigation = () => {
         onClick={handleClick}
         selectedKeys={[current]}
         mode="horizontal"
-        style={{[`textAlign`]: 'right'}}
+        style={{[`textAlign`]: 'center'}}
       >
         <Menu.Item key="home">
           <Link to="/">Home</Link>
