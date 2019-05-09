@@ -9,36 +9,56 @@ import About from "./components/about/about"
 
 import { getNewsArticles } from "./utils/getNewsArticles"
 
-const App =  () => {
-  const newsData = getNewsArticles()
-  return (
-    <div>
-      <Router>
-        <MainNavigation />
-        <SubNavigation  />
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        {
-          newsData.map(newsSource => {
-            return (
-              <Route
-                key={newsSource.newsSource.redirect}
-                path={'/' + newsSource.newsSource.redirect}
-                component={
-                  () => (
-                    <NewsSection
-                      title={newsSource.newsSource.formattedName}
-                      newsItems={newsSource.newsItems}
-                    />
-                  )
-                }
-              />
-            )
-          })
-        }
-      </Router>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state= {
+      loading: true,
+      newsData: []
+    }
+  }
+  componentDidMount() {
+    const newsData = getNewsArticles()
+    this.setState({
+      newsData,
+      loading: false
+    })
+  }
+
+  render () {
+    const {newsData, loading} = this.state
+    return (
+      <div>
+        <Router>
+          <MainNavigation />
+          <SubNavigation newsData={newsData} />
+          <Route exact path="/" component={() => <Home newsData={newsData} /> } />
+          <Route path="/about" component={About} />
+          {
+            newsData.map(newsSource => {
+              return (
+                <Route
+                  key={newsSource.newsSource.redirect}
+                  path={'/' + newsSource.newsSource.redirect}
+                  component={
+                    () => (
+                      <NewsSection
+                        loading={loading}
+                        title={newsSource.newsSource.formattedName}
+                        newsItems={newsSource.newsItems}
+                      />
+                    )
+                  }
+                />
+              )
+            })
+          }
+        </Router>
+      </div>
+    );
+
+  }
+
 }
 
 export default App;

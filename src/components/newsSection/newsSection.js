@@ -1,40 +1,43 @@
 import React from 'react';
 import styled from "styled-components"
 import NewsItem from "../newsItem/newsItem"
+import { Divider, Row, Col } from "antd"
 
 const newsSection = (props) => {
   return (
     <Container>
-      <Title>{props.title}</Title>
-      <NewsItemsContainer>
-        {props.newsItems.map(newsItem => {
-          return (
-            <NewsItem
-              key={newsItem.id}
-              id={newsItem.id}
-              title={newsItem.title}
-              image={newsItem.imageUrl}
-              excerpt={newsItem.excerpt}
-            />
-          )
-        })}
-      </NewsItemsContainer>
+      <Divider ><Title>{props.title}</Title></Divider>
+          <NewsItemsContainer>
+            <Row type="flex" justify="center">
+                {props.newsItems.map(newsItem => {
+                  return (
+                    <Col span={5} key={newsItem.id}>
+                      <NewsItem
+                        id={newsItem.id}
+                        title={newsItem.title}
+                        image={newsItem.imageUrl}
+                        excerpt={newsItem.excerpt}
+                      />
+                    </Col>
+                  )
+                })}
+            </Row>
+          </NewsItemsContainer>
+
+
     </Container>
   );
 };
 
 const Container = styled.div`
-  padding: 1rem;
-  width: 100%;
+
 `
 const Title = styled.h1`
-text-align: left;
+
 `
 
 const NewsItemsContainer = styled.div`
-  display: grid;
-  justify-content: space-around;
-  grid-template-columns: auto auto auto auto;
+
 `
 
 export default newsSection;

@@ -5,33 +5,29 @@ import serviceNameFormatter from "../utils/serviceNameFormatter"
 
 export const getNewsArticles =  () => {
   const formattedNewsArticles = []
-
-  Object.keys(services).map(service => {
+  Object.keys(services).forEach(service => {
       const newsItems =[]
-      let image = ''
-      axios.get(services[service]).then(response => {
-        response.data.map(({id, title, excerpt, _links}) => {
-          axios.get(_links[`wp:featuredmedia`][0].href).then(response => {
-            image = response.data.guid.rendered
+      axios.get(services[service]).then(newsServiceResponse => {
+        newsServiceResponse.data.forEach(({id, title, excerpt, _links}) => {
+          axios.get(_links[`wp:featuredmedia`][0].href).then(imageResponse => {
             newsItems.push({
               id,
               title: title.rendered,
-              excerpt:excerpt.rendered,
-              imageUrl: image
+              excerpt: excerpt.rendered,
+              imageUrl: imageResponse.data.guid.rendered
             })
         }).catch(e => {
-          console.log(`Error getting ${service} image: ${e}`);
-          image = error
+          console.error(`Error getting ${service} image: ${e}`);
           newsItems.push({
             id,
             title: title.rendered,
             excerpt:excerpt.rendered,
-            imageUrl: image
+            imageUrl: error
           })
         })
       })
     }).catch(e => {
-      console.log(`Error getting ${service} data: ${e}`);
+      console.error(`Error getting ${service} data: ${e}`);
     })
     formattedNewsArticles.push({
       newsSource: serviceNameFormatter[service],
