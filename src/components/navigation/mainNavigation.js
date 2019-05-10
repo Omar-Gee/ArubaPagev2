@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 import "antd/dist/antd.css";
 import { Menu } from 'antd';
+import  star  from "../../images/512.png"
 
 const MainNavigation = () => {
   const [current, setCurrent] = React.useState('')
@@ -23,6 +24,9 @@ const MainNavigation = () => {
         <Menu.Item key="home">
           <Link to="/">Home</Link>
         </Menu.Item>
+        <Menu.Item key="image">
+          <Link to="/"><NavigationImage src={star} alt='star'/></Link>
+        </Menu.Item>
         <Menu.Item key="about">
           <Link to="/about">About</Link>
         </Menu.Item>
@@ -33,5 +37,9 @@ const MainNavigation = () => {
 
 export default MainNavigation;
 
+const NavigationImage = styled.img`
+height: 33.14px;
+    border-radius: 16px;
+`
 const Container = styled.div`
 `

@@ -1,4 +1,8 @@
 export default {
+  xclusivo: {
+    formattedName: 'Xclusivo',
+    redirect: 'xclusivo',
+  },
   awe24: {
     formattedName: 'Awe 24',
     redirect: 'awe24',

@@ -15,6 +15,7 @@ export const getNewsArticles =  () => {
           if (newsServiceResponse.data.feed) {
             if (newsServiceResponse.data.feed.title === "NoticiaCla") {
               newsServiceResponse.data.items.forEach(item => {
+
                 const id = item.guid.slice(item.guid.lastIndexOf("/") + 1)
                 const title = item.title
                 const excerpt = item.description
@@ -28,7 +29,7 @@ export const getNewsArticles =  () => {
               })
             }
             else  {
-              console.log(newsServiceResponse.data.items.forEach(item => {
+              newsServiceResponse.data.items.forEach(item => {
                 const id = item.guid.slice(item.guid.lastIndexOf("/") + 1)
                 const title = item.title
                 const excerpt = item.description
@@ -39,7 +40,7 @@ export const getNewsArticles =  () => {
                   excerpt,
                   imageUrl
                 })
-              }));
+              });
             }
           }
         })
