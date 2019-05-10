@@ -11,7 +11,7 @@ const newsSection = (props) => {
             <Row type="flex" justify="center">
                 {props.newsItems.map(newsItem => {
                   return (
-                    <Col sm={{ span: 24 }} md={{ span: 10 }}xl={{ span: 6 }}   key={newsItem.id}>
+                    <Col sm={{ span: 24 }} md={{ span: 10 }}xl={{ span: 6 }} key={newsItem.id}>
                       <NewsItem
                         id={newsItem.id}
                         title={newsItem.title}
@@ -23,8 +23,6 @@ const newsSection = (props) => {
                 })}
             </Row>
           </NewsItemsContainer>
-
-
     </Container>
   );
 };
@@ -41,3 +39,9 @@ const NewsItemsContainer = styled.div`
 `
 
 export default newsSection;
+
+
+
+
+
+

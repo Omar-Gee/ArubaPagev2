@@ -8,6 +8,7 @@ import SubNavigation from "./components/subNavigation/subNavigation"
 import About from "./components/about/about"
 
 import { getNewsArticles } from "./utils/getNewsArticles"
+import { BackTop } from 'antd';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,18 +22,26 @@ class App extends React.Component {
     const newsData = await getNewsArticles()
     this.setState({
       newsData,
-      loading: false
+    })
+  }
+
+  setLoading = () => {
+    this.setState({
+      loading: false,
     })
   }
 
   render () {
     const {newsData, loading} = this.state
+    setTimeout(() => {
+      this.setLoading()
+    }, 5000);
     return (
       <div>
         <Router>
           <MainNavigation />
           <SubNavigation newsData={newsData} />
-          <Route exact path="/" component={() => <Home newsData={newsData} /> } />
+          <Route exact path="/" component={() => <Home loading={loading} /> } />
           <Route path="/about" component={About} />
           {
             newsData.map(newsSource => {
@@ -54,6 +63,7 @@ class App extends React.Component {
             })
           }
         </Router>
+        <BackTop />
       </div>
     );
 

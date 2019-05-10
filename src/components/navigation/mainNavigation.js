@@ -24,8 +24,17 @@ const MainNavigation = () => {
         <Menu.Item key="home">
           <Link to="/">Home</Link>
         </Menu.Item>
-        <Menu.Item key="image">
-          <Link to="/"><NavigationImage src={star} alt='star'/></Link>
+        <Menu.Item key="title">
+        <Link to="/">
+          <TitleContainer>
+
+              <Title>Aruba</Title>
+              <NavigationImage src={star} alt='star'/>
+              <Title>Page</Title>
+
+
+          </TitleContainer>
+          </Link>
         </Menu.Item>
         <Menu.Item key="about">
           <Link to="/about">About</Link>
@@ -36,7 +45,17 @@ const MainNavigation = () => {
 };
 
 export default MainNavigation;
+const TitleContainer = styled.div`
+display: flex;
+align-items: center;
 
+`
+const Title = styled.p`
+text-transform: uppercase;
+margin: 0 32px;
+font-size: x-large;
+    font-weight: 500;
+`
 const NavigationImage = styled.img`
 height: 33.14px;
     border-radius: 16px;
