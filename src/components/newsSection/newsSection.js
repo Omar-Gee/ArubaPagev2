@@ -4,7 +4,6 @@ import NewsItem from "../newsItem/newsItem"
 import { Divider, Row, Col } from "antd"
 
 const newsSection = (props) => {
-  console.log(props);
   return (
     <Container>
       <Divider ><Title>{props.title}</Title></Divider>

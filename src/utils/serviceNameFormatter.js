@@ -1,4 +1,16 @@
 export default {
+  awe24: {
+    formattedName: 'Awe 24',
+    redirect: 'awe24',
+  },
+  noticiaCla: {
+    formattedName: 'Noticia Cla',
+    redirect: 'noticiacla',
+  },
+  boletinExtra: {
+    formattedName: "Boletin Extra",
+    redirect: "boletinextra",
+  },
   eArubianoNews: {
     formattedName: "eArubianoNews",
     redirect: "earubianonews",
@@ -27,9 +39,9 @@ export default {
     formattedName: "Focus",
     redirect: "focus",
   },
-  batiBleki: {
-    formattedName: "Bati Bleki",
-    redirect: "batibleki",
+  visitAruba: {
+    formattedName: "Visit Aruba",
+    redirect: "visitaruba",
   },
   bonDia: {
     formattedName: "Bon Dia",

@@ -17,8 +17,8 @@ class App extends React.Component {
       newsData: []
     }
   }
-  componentDidMount() {
-    const newsData = getNewsArticles()
+  async componentDidMount() {
+    const newsData = await getNewsArticles()
     this.setState({
       newsData,
       loading: false
@@ -27,7 +27,6 @@ class App extends React.Component {
 
   render () {
     const {newsData, loading} = this.state
-    console.log(newsData);
     return (
       <div>
         <Router>
