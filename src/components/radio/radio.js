@@ -2,7 +2,7 @@ import React from 'react';
 import radioStations from '../../services/radiosStations'
 import 'antd/dist/antd.css';
 import { Slider } from "antd"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import {
   MdPlayArrow,
   MdPause,

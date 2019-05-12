@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import NewsItem from "../newsItem/newsItem"
 import 'antd/dist/antd.css';
 import { Divider, Row, Col, Spin } from "antd"

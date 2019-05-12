@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { Divider} from "antd"
 import { Spin, Row, Col } from 'antd';
 

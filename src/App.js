@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import Home from "./components/home/home"
 import NewsSection from "./components/newsSection/newsSection"
 import MainNavigation from "./components/navigation/mainNavigation"
