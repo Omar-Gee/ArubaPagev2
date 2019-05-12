@@ -1,9 +1,18 @@
 import React from 'react';
 import styled from "styled-components"
 import NewsItem from "../newsItem/newsItem"
-import { Divider, Row, Col } from "antd"
+import 'antd/dist/antd.css';
+import { Divider, Row, Col, Spin } from "antd"
 
 const newsSection = (props) => {
+  if (props.newsItems.length < 10) {
+    return (
+      <>
+        <Divider ><Title>{props.title}</Title></Divider>
+        <ContainerSpinner><Spin size="large" tip="Loading news.."/></ContainerSpinner>
+      </>
+    )
+  } else
   return (
     <Container>
       <Divider ><Title>{props.title}</Title></Divider>
@@ -27,7 +36,14 @@ const newsSection = (props) => {
   );
 };
 
+const ContainerSpinner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+`
 const Container = styled.div`
+margin: 0 0 64px 0;
 
 `
 const Title = styled.h1`

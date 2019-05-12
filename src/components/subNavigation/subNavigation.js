@@ -18,6 +18,9 @@ const SubNavigation = (props) => {
         mode="horizontal"
         style={{[`textAlign`]: 'center'}}
       >
+        <Menu.Item>
+          <Link to="latest">Latest</Link>
+        </Menu.Item>
         {
           Object.keys(services).map(newsSource => {
             const newsSourceData = serviceNameFormatter[newsSource]
