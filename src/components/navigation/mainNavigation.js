@@ -19,35 +19,34 @@ const MainNavigation = () => {
         onClick={handleClick}
         selectedKeys={[current]}
         mode="horizontal"
-        style={{[`textAlign`]: 'center'}}
+        style={{
+          [`textAlign`]: 'left',
+          background: 'cornflowerblue'
+          }}
       >
-        <Menu.Item key="home">
-          <Link to="/">Home</Link>
-        </Menu.Item>
-        <Menu.Item key="title">
-        <Link to="/">
-          <TitleContainer>
-
+        <StyledMenuItem key="title">
+          <Link to="/">
+            <TitleContainer>
               <Title>Aruba</Title>
               <NavigationImage src={star} alt='star'/>
               <Title>Page</Title>
-
-
-          </TitleContainer>
+            </TitleContainer>
           </Link>
-        </Menu.Item>
-        <Menu.Item key="about">
+        </StyledMenuItem>
+        <StyledMenuItem key="about">
           <Link to="/about">About</Link>
-        </Menu.Item>
+        </StyledMenuItem>
       </Menu>
     </Container>
   );
 };
 
 export default MainNavigation;
+
 const TitleContainer = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
+  color: #fff;
 
 `
 const Title = styled.p`
@@ -57,8 +56,22 @@ font-size: x-large;
     font-weight: 500;
 `
 const NavigationImage = styled.img`
-height: 33.14px;
-    border-radius: 16px;
+  height: 33.14px;
+  border-radius: 16px;
+`
+const StyledMenuItem = styled(Menu.Item)`
+.ant-menu-horizontal > .ant-menu-item {
+    color: #fff !important;
+  }
+
+`
+// TODO: change main nav to color white text
+const Test = styled(Menu.Item)`
+  .ant-menu-horizontal >
+  .ant-menu-item:hover {
+    border-bottom: 2px solid yellow !important;
+  }
 `
 const Container = styled.div`
+
 `

@@ -26,19 +26,11 @@ class App extends React.Component {
     })
   }
 
-  setLoading = () => {
-    this.state.loading ?
-    setTimeout(() => {
-      this.setState({
-        loading: false,
-      })
-    }, 5000) : console.log("loaded");
 
-  }
 
   render () {
     const {newsData, loading} = this.state
-    this.setLoading()
+
     return (
       <div>
         <Router>

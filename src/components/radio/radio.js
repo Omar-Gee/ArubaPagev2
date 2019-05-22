@@ -92,7 +92,7 @@ class Radio extends React.Component {
 
 const Container = styled.div`
   color: #fff;
-  background: #007bff;
+  background: cornflowerblue;
   height: 50px;
   display: flex;
   align-items: center;
