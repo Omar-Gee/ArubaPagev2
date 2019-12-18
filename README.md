@@ -2,7 +2,7 @@
 
 A react app that fetches news data from Aruba news sources and displays them using ant design. This project is primarily intended for practice and honing skills.
 
-A live version of this project can be found [here](https://brave-leavitt-de2369.netlify.com/)
+A live version of this project can be found [here](https://arubapage.netlify.com/)
 
 ## Getting Started
 
